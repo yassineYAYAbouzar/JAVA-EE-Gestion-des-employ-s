@@ -1,1 +1,2 @@
-192.168.0.150 - - [12/Jan/2022:19:41:34 +0100] "GET /sockjs-node/info?t=1642012894752 HTTP/1.1" 404 - http-bio-8080-exec-1 0
+127.0.0.1 - - [12/Jan/2022:21:23:41 +0100] "GET /untitled/ HTTP/1.1" 200 1286 http-bio-8080-exec-1 292
+127.0.0.1 - - [12/Jan/2022:21:23:41 +0100] "GET /untitled/static/img/todolist.jpg HTTP/1.1" 200 1286 http-bio-8080-exec-3 1

@@ -1,4 +1,4 @@
-package DataAccess.Entities;
+package DataAccess;
 
 public enum Role {
     EMPLOYEE,

@@ -1,2 +1,10 @@
+/home/yaya/IdeaProjects/untitled/src/main/java/Main.java
+/home/yaya/IdeaProjects/untitled/src/main/java/DataAccess/Dae/EmployeeImp.java
 /home/yaya/IdeaProjects/untitled/src/main/java/Presentation/config/ThymleafConfig.java
-/home/yaya/IdeaProjects/untitled/src/main/java/Presentation/IndexServlet.java
+/home/yaya/IdeaProjects/untitled/src/main/java/DataAccess/Dae/GenericDae.java
+/home/yaya/IdeaProjects/untitled/src/main/java/Presentation/RegisterServlet.java
+/home/yaya/IdeaProjects/untitled/src/main/java/DataAccess/repository/EmployeeRepositoryImp.java
+/home/yaya/IdeaProjects/untitled/src/main/java/Database/util/HibernateUtil.java
+/home/yaya/IdeaProjects/untitled/src/main/java/DataAccess/repository/GenericRepo.java
+/home/yaya/IdeaProjects/untitled/src/main/java/DataAccess/Entities/Employee.java
+/home/yaya/IdeaProjects/untitled/src/main/java/DataAccess/Role.java

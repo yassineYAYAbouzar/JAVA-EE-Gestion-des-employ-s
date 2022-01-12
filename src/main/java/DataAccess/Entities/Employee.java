@@ -1,9 +1,14 @@
 package DataAccess.Entities;
 
+import DataAccess.Role;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Setter
 @SuperBuilder
@@ -24,17 +29,13 @@ public class Employee {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
+    @Column(unique = true ,length = 200)
     private String email;
     private String password;
     private Role role ;
-    private Address adress;
 
-    public Employee(String firstName, String lastName, String email, String password, Role role, Address adress) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-        this.adress = adress;
-    }
+   // @OneToMany
+   // private Collection<Address> address = new ArrayList<>();
+
+
 }

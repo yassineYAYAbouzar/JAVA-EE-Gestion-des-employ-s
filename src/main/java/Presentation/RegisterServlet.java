@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "Presentation.IndexServlet" , urlPatterns = {"/" , "/index"})
-public class IndexServlet extends HttpServlet {
+@WebServlet(name = "Presentation.RegisterServlet" , urlPatterns = {"/" , "/index"})
+public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Presentation.IndexServlet Started !");
+        System.out.println("Presentation.RegisterServlet Started !");
 
         TemplateEngine engine = ThymleafConfig.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request,response,request.getServletContext());
         context.setVariable("salam","yassine");
-        engine.process("index.html" ,context ,response.getWriter());
+        engine.process("register.html" ,context ,response.getWriter());
     }
 }
