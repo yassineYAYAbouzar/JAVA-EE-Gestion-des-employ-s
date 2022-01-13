@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="component/header.html :: header"><title>Header Here FAKE</title></head>
+<body>
+<div th:replace="component/navigationmenu.html :: navbar"></div>
+<div class="container">
+
+    <h1>Login in</h1>
+</div>
+<form method="post" class="m-5" action="/login/auth" th:action="@{/login/auth}">
+
+
+    <div th:text="${error}"  th:if="${error}" class="alert alert-warning alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputEmakil1">email Address</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmakil1" aria-describedby="emailHelp">
+        <p class="help-block alert-error" >
+            Error For Email</p>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        <p class="help-block alert-error" th:text="${errorName}" th:unless="${errorName} == null">
+            Error For Password</p>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" style="width: 13%">Submit</button>
+</form>
+
+</div>
+
+<footer th:replace="component/footer.html :: footer">Footer Here FAKE</footer>
+
+</body>
+</html>

@@ -1,19 +1,18 @@
 import DataAccess.Dae.EmployeeImp;
 import DataAccess.Entities.Employee;
 import DataAccess.Role;
+import DataAccess.repository.EmployeeRepositoryImp;
 
 
 public class Main {
     public static void main(String[] args) {
 
-        EmployeeImp employeeImp = new EmployeeImp();
-        Employee employee = new Employee();
+        EmployeeRepositoryImp employeeRepositoryImp = new EmployeeRepositoryImp();
 
-        employee.setEmail("emjkkjail");
-        employee.setFirstName("first Name");
-        employee.setRole(Role.EMPLOYEE);
-        employee.setPassword("password");
-        employee.setLastName("lasstname");
-        employeeImp.insertEmployee(employee);
+        try {
+            employeeRepositoryImp.findByEmailAndPassword("yassinebouzar@gmail.com","passkword");
+        }catch (Exception e){
+            System.out.println("dddd");
+        }
     }
 }

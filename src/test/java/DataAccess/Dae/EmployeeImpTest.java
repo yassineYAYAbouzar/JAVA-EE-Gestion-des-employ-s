@@ -13,8 +13,8 @@ public class EmployeeImpTest extends TestCase {
     private Employee employee;
     public void setUp() throws Exception {
         employee = employee.builder()
-                .email("yasskkkkkkine103")
-                .password("bouzar")
+                .email("yassinebouzar@gmail.com")
+                .password("password")
                 .lastName("yassine101")
                 .firstName("password")
                 .role(Role.ADMIN)

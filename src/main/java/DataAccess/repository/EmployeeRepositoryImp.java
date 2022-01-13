@@ -3,7 +3,7 @@ package DataAccess.repository;
 
 import DataAccess.Entities.Employee;
 import DataAccess.Role;
-import Database.util.HibernateUtil;
+import Database.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

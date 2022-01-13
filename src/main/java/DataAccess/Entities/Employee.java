@@ -1,14 +1,12 @@
 package DataAccess.Entities;
 
 import DataAccess.Role;
+import jakarta.validation.constraints.Email;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Setter
 @SuperBuilder
@@ -30,9 +28,14 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
     @Column(unique = true ,length = 200)
+    @Email
     private String email;
     private String password;
     private Role role ;
+
+    @OneToMany(mappedBy = "employee" ,cascade = CascadeType.ALL)
+
+    private List<Address> addresses;
 
    // @OneToMany
    // private Collection<Address> address = new ArrayList<>();

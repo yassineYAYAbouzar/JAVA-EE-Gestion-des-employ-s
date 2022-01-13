@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="component/header.html :: header"><title>Header Here FAKE</title></head>
+<body>
+<div th:replace="component/navigationmenu.html :: navbar"></div>
+<div class="container">
+
+      <div>Welcome <div th:text="${employee.firstName}" class="my-5"></div></div>
+
+
+    <button class="btn btn-primary my-3">Add Employee</button>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">firstName</th>
+            <th scope="col">lastName</th>
+            <th scope="col">email</th>
+            <th scope="col">role</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="currentTodo : ${employeeList}">
+            <td th:text="${currentTodo.id}"></td>
+            <td th:text="${currentTodo.firstName}"></td>
+            <td th:text="${currentTodo.lastName}"></td>
+            <td th:text="${currentTodo.email}"></td>
+            <td th:text="${currentTodo.role}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<footer th:replace="component/footer.html :: footer">Footer Here FAKE</footer>
+
+</body>
+</html>

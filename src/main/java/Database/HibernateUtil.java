@@ -1,4 +1,4 @@
-package Database.util;
+package Database;
 
 import DataAccess.Entities.Employee;
 import org.hibernate.SessionFactory;

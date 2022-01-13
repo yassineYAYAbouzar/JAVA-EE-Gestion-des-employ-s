@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:15:59:42 +0100] "GET /untitled/login/ HTTP/1.1" 200 2822 http-bio-8080-exec-1 466
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:15:59:49 +0100] "POST /untitled/login/auth HTTP/1.1" 302 - http-bio-8080-exec-3 1693
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:15:59:49 +0100] "GET /login HTTP/1.1" 404 - http-bio-8080-exec-4 0
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:16:00:05 +0100] "GET /login HTTP/1.1" 404 - http-bio-8080-exec-5 0
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:16:00:10 +0100] "GET /untitled/login/ HTTP/1.1" 200 2822 http-bio-8080-exec-6 3
+0:0:0:0:0:0:0:1 - - [13/Jan/2022:16:00:16 +0100] "POST /untitled/login/auth HTTP/1.1" 200 3647 http-bio-8080-exec-7 41

@@ -2,7 +2,7 @@ package DataAccess.Dae;
 
 
 import DataAccess.Entities.Employee;
-import Database.util.HibernateUtil;
+import Database.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
