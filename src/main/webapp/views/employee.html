@@ -5,10 +5,18 @@
 <div th:replace="component/navigationmenu.html :: navbar"></div>
 <div class="container">
 
-      <div>Welcome <div th:text="${employee.firstName}" class="my-5"></div></div>
+    <div th:text="${success}"  th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+   <div th:text="${error}"  th:if="${error}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+        <a th:if="${sessionEmployee.role == admin }" href="/employee/add" th:href="@{/employee/add}" class="btn btn-primary my-3">Add Employee</a>
 
-
-    <button class="btn btn-primary my-3">Add Employee</button>
     <table class="table table-striped">
         <thead>
         <tr>
@@ -20,12 +28,31 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="currentTodo : ${employeeList}">
-            <td th:text="${currentTodo.id}"></td>
-            <td th:text="${currentTodo.firstName}"></td>
-            <td th:text="${currentTodo.lastName}"></td>
-            <td th:text="${currentTodo.email}"></td>
-            <td th:text="${currentTodo.role}"></td>
+        <tr th:each="currentEmployee : ${employeeList}">
+            <td th:text="${currentEmployee.id}"></td>
+            <td th:text="${currentEmployee.firstName}"></td>
+            <td th:text="${currentEmployee.lastName}"></td>
+            <td th:text="${currentEmployee.email}"></td>
+            <td th:text="${currentEmployee.role}"></td>
+            <td th:if="${sessionEmployee.role == admin }">
+                <a class="btn btn-mini btn-primary" th:href="@{/employee/update(employeId=${currentEmployee.id})}"><i class="icon-edit icon-white"></i> Edit</a>
+                <a class="btn btn-mini btn-danger" data-toggle="modal" th:href="'#confirm_delete_' + ${currentEmployee.id}"><i class="icon-remove icon-white"></i> Delete</a>
+                <div class="modal hide" th:id="'confirm_delete_' + ${currentEmployee.id}">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">×</button>
+                        <h3>Confirmation</h3>
+                    </div>
+                    <div class="modal-body">
+                        <p th:text="|Are you sure to delete todo ${currentEmployee.id} | + '\'' + ${currentEmployee.email} + '\'' + '?'"></p>
+                    </div>
+                    <div class="modal-footer">
+                        <form action="/employee/delete" th:action="@{/employee/delete}" method="post">
+                            <input type="hidden" name="id" th:value="${currentEmployee.id}">
+                            <a href="#" class="btn" data-dismiss="modal">Cancel</a> <button type="submit" class="btn btn-primary">Confirm</button>
+                        </form>
+                    </div>
+                </div>
+            </td>
         </tr>
         </tbody>
     </table>

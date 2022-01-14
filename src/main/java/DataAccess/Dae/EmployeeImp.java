@@ -11,7 +11,7 @@ import java.util.List;
 public class EmployeeImp implements GenericDae<Employee, Long> {
 
     @Override
-    public Employee insertEmployee(Employee employee) {
+    public Employee insertElement(Employee employee) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -27,7 +27,7 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         return new Employee();
     }
     @Override
-    public Employee getEmployeeById(long id) {
+    public Employee getElementById(long id) {
         Transaction transaction = null;
         Employee employee = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
@@ -43,7 +43,7 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         return employee;
     }
     @Override
-    public List<Employee> selectAllEmployee() {
+    public List<Employee> selectAllElements() {
 
         Transaction transaction = null;
         List<Employee> employeeList = null;
@@ -62,14 +62,14 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         return employeeList;
     }
     @Override
-    public boolean deleteEmployee(Long id) {
+    public boolean deleteElement(Long id) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
             Employee employee = session.get(Employee.class, id);
             if (employee != null) {
-                session.delete(employee);
+                session.remove(employee);
                 return true;
             }
 
@@ -83,7 +83,7 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         return false;
     }
     @Override
-    public Employee updateEmployee(Employee employee)  {
+    public Employee updateElement(Employee employee)  {
 
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {

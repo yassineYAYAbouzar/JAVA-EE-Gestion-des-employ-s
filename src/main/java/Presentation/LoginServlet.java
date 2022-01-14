@@ -20,11 +20,8 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("Presentation.LoginServlet Started !");
-
         TemplateEngine engine = ThymleafConfig.getTemplateEngine(request.getServletContext());
         WebContext context = new WebContext(request,response,request.getServletContext());
-        context.setVariable("salam","yassine");
         engine.process("login.html" ,context ,response.getWriter());
     }
 
@@ -41,19 +38,15 @@ public class LoginServlet extends HttpServlet {
         try {
              employee = employeeRepositoryImp.findByEmailAndPassword(email,password);
 
-            HttpSession session = request.getSession(true);
-            session.setAttribute("employee", employee);
-            request.getRequestDispatcher("/employee").forward(request, response);
+             HttpSession session = request.getSession(true);
+             session.setAttribute("sessionEmployee", employee);
+             request.getRequestDispatcher("/employee").forward(request, response);
         }catch (Exception e){
-            if(employee == null){
-                context.setVariable("error", "Login failed! Error in email or password");
-                engine.process("login.html", context, response.getWriter());
-                response.getWriter().write("no");
-            }
+           context.setVariable("error", "Login failed! Error in email or password");
+            engine.process("login.html", context, response.getWriter());
 
         }
 
-        //request.getRequestDispatcher("/").forward(request, response);
 
     }
 
