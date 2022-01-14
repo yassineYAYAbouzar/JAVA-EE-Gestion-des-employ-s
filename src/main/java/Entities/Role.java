@@ -1,4 +1,4 @@
-package DataAccess;
+package Entities;
 
 import lombok.Getter;
 import lombok.Setter;

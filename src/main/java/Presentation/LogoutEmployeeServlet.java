@@ -1,10 +1,5 @@
 package Presentation;
 
-import DataAccess.Dae.EmployeeImp;
-import Presentation.config.ThymleafConfig;
-import org.thymeleaf.TemplateEngine;
-import org.thymeleaf.context.WebContext;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

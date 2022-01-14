@@ -1,8 +1,8 @@
 package Presentation;
 
-import DataAccess.Dae.EmployeeImp;
-import DataAccess.Entities.Employee;
-import DataAccess.Role;
+import Dae.EmployeeImp;
+import Entities.Employee;
+import Entities.Role;
 import Presentation.config.ThymleafConfig;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;

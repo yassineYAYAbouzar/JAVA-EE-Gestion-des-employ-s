@@ -16,29 +16,36 @@
         <div class="form-group">
             <label for="exampleInputEmakil1">firstName</label>
             <input type="firstName" name="firstName" class="form-control" id="examplheInputEmakil1" aria-describedby="emailHelp">
-            <p class="help-block alert-error" >
-                Error For firstName</p>
         </div>
 
         <div class="form-group">
             <label for="exampleInputEmakil1">lastName</label>
             <input type="lastName" name="lastName" class="form-control" id="examplheInputEmakkil1" aria-describedby="emailHelp">
-            <p class="help-block alert-error" >
-                Error For lastName</p>
         </div>
 
         <div class="form-group">
             <label for="exampleInputEmakil1">email Address</label>
             <input type="email" name="email" class="form-control" id="exampleInputEmakil1" aria-describedby="emailHelp">
-            <p class="help-block alert-error" >
-                Error For Email</p>
         </div>
+
+        Address
+        <div class="form-group">
+            <label for="exampleInputEmakil1">city</label>
+            <input type="text" name="city" class="form-control" id="examkplheInputEmakkil1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmakil1">street</label>
+            <input type="text" name="street" class="form-control" id="exampleInkputEmakil1" aria-describedby="emailHelp">
+        </div>
+
         <div class="form-group">
             <label >Role select</label>
             <select class="form-control" >
                 <option th:each="role : ${roleList}" name="role" th:value="${role}" th:text="${role}"></option>
             </select>
         </div>
+
 
 
         <button type="submit" class="btn btn-primary" style="width: 13%">Submit</button>

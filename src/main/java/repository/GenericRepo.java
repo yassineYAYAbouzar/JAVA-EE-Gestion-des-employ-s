@@ -1,7 +1,7 @@
-package DataAccess.repository;
+package repository;
 
-import DataAccess.Entities.Employee;
-import DataAccess.Role;
+import Entities.Employee;
+import Entities.Role;
 
 public interface GenericRepo<T , Long> {
 

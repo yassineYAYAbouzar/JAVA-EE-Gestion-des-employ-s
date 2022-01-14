@@ -1,12 +1,12 @@
-package DataAccess.Entities;
+package Entities;
 
-import DataAccess.Role;
-import jakarta.validation.constraints.Email;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Setter
 @SuperBuilder
@@ -30,5 +30,9 @@ public class Employee {
     private String email;
     private String password;
     private Role role ;
+
+
+    @OneToMany(mappedBy = "employee" ,cascade = CascadeType.ALL)
+    Set<Address> addresses = new HashSet<>();
 
 }

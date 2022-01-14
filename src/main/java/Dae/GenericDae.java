@@ -1,4 +1,4 @@
-package DataAccess.Dae;
+package Dae;
 
 import java.io.Serializable;
 import java.util.List;

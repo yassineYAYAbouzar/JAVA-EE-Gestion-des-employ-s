@@ -1,7 +1,7 @@
-package DataAccess.Dae;
+package Dae;
 
-import DataAccess.Entities.Employee;
-import DataAccess.Role;
+import Entities.Employee;
+import Entities.Role;
 import junit.framework.TestCase;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

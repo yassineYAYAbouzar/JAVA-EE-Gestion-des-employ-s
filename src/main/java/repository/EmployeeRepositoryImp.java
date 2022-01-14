@@ -1,8 +1,8 @@
-package DataAccess.repository;
+package repository;
 
 
-import DataAccess.Entities.Employee;
-import DataAccess.Role;
+import Entities.Employee;
+import Entities.Role;
 import Database.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

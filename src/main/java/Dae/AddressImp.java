@@ -1,38 +1,39 @@
-package DataAccess.Dae;
+package Dae;
 
 
-import DataAccess.Entities.Employee;
 import Database.HibernateUtil;
+import Entities.Address;
+import Entities.Employee;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class EmployeeImp implements GenericDae<Employee, Long> {
+public class AddressImp implements GenericDae<Address, Long> {
 
     @Override
-    public Employee insertElement(Employee employee) {
+    public Address insertElement(Address address) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.save(employee);
+            session.save(address);
             transaction.commit();
-            return employee;
+            return address;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
             }
             e.printStackTrace();
         }
-        return new Employee();
+        return new Address();
     }
     @Override
-    public Employee getElementById(long id) {
+    public Address getElementById(long id) {
         Transaction transaction = null;
-        Employee employee = null;
+        Address employee = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            employee = session.get(Employee.class, id);
+            employee = session.get(Address.class, id);
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {
@@ -43,14 +44,14 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         return employee;
     }
     @Override
-    public List<Employee> selectAllElements() {
+    public List<Address> selectAllElements() {
 
         Transaction transaction = null;
-        List<Employee> employeeList = null;
+        List<Address> employeeList = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            employeeList = session.createQuery("from Employee").getResultList();
+            employeeList = session.createQuery("from Address").getResultList();
 
             transaction.commit();
         } catch (Exception e) {
@@ -82,21 +83,11 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         }
         return false;
     }
-    @Override
-    public Employee updateElement(Employee employee)  {
 
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.saveOrUpdate(employee);
-            transaction.commit();
-            return  employee;
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        }
-        return new Employee();
+    @Override
+    public Address updateElement(Address address) {
+        return null;
     }
+
+
 }

@@ -1,9 +1,9 @@
 package Presentation;
 
-import DataAccess.Dae.EmployeeImp;
-import DataAccess.Entities.Employee;
-import DataAccess.Role;
-import DataAccess.repository.EmployeeRepositoryImp;
+import Dae.EmployeeImp;
+import Entities.Address;
+import Entities.Employee;
+import Entities.Role;
 import Presentation.config.ThymleafConfig;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -46,12 +46,19 @@ public class AddEmployeeServlet extends HttpServlet {
         String email = request.getParameter("email");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
+
+        String street = request.getParameter("street");
+        String city = request.getParameter("city");
+
+
+
         EmployeeImp employeeImp = new EmployeeImp();
         Employee employee=new Employee() ;
         employee.setFirstName(firstName);
         employee.setEmail(email);
         employee.setLastName(lastName);
         employee.setRole(Role.EMPLOYEE);
+        employee.getAddresses().add(new Address(street,city,employee));
         try {
             employee = employeeImp.insertElement(employee);
             HttpSession session = request.getSession(true);

@@ -1,8 +1,8 @@
 package Presentation;
 
-import DataAccess.Dae.EmployeeImp;
-import DataAccess.Entities.Employee;
-import DataAccess.repository.EmployeeRepositoryImp;
+import Dae.EmployeeImp;
+import Entities.Employee;
+import repository.EmployeeRepositoryImp;
 import Presentation.config.ThymleafConfig;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -12,7 +12,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet(name = "Presentation.ProfileEmployeeServlet" , urlPatterns =  "/employee/profile")
