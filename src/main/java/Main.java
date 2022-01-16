@@ -7,21 +7,22 @@ import Entities.Role;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.TypedQuery;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-
-
+       // Transaction transaction = null;
+       // Session session = HibernateUtil.getSessionFactory().openSession();
+        //transaction = session.beginTransaction();
+        //TypedQuery<Employee> employeeList = session.createQuery("from Employee",Employee.class);
+        //transaction.commit();
         EmployeeImp employeeImp = new EmployeeImp();
-        Employee employee = new Employee();
-        employee.setEmail("yassinebouzar@gmail.com");
-        employee.setFirstName("dd");
-        employee.setLastName("la");
-        employee.setPassword("password");
-        employee.setRole(Role.ADMIN);
-        employee.getAddresses().add(new Address("dd","dd",employee));
+        List<Employee> selectAllElements= employeeImp.selectAllElements();
 
-
-        employeeImp.insertElement(employee);
+        for (int i = 0 ; i <selectAllElements.get(0).getAddresses().size() ; i++){
+            System.out.println(selectAllElements.get(0).getAddresses());
+        }
 
     }
 }

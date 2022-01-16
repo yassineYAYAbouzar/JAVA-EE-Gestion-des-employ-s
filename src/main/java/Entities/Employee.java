@@ -11,10 +11,8 @@ import java.util.Set;
 @Setter
 @SuperBuilder
 @Getter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
 @Entity
 @Table(name = "employee_table")
 public class Employee {
@@ -31,8 +29,10 @@ public class Employee {
     private String password;
     private Role role ;
 
-
-    @OneToMany(mappedBy = "employee" ,cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @JoinColumn(name = "contact_id" )
+    private Contact contact;
+    @OneToMany(mappedBy = "employee" ,cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     Set<Address> addresses = new HashSet<>();
 
 }

@@ -1,13 +1,14 @@
 package Entities;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
 @Getter
 @Setter
+@SuperBuilder
+@ToString
 @NoArgsConstructor
 @Entity
 public class Address {

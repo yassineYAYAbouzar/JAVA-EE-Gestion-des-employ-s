@@ -27,8 +27,17 @@
             <label for="exampleInputEmakil1">email Address</label>
             <input type="email" name="email" class="form-control" id="exampleInputEmakil1" aria-describedby="emailHelp">
         </div>
+        <div class="form-group">
+            <label for="exampleInputEmakil1">mobile Number</label>
+            <input type="text" name="mobile" class="form-control" id="examplesInputEmakil1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmakil1">fix Number</label>
+            <input type="text" name="fix" class="form-control" id="examplesInpustEmakil1" aria-describedby="emailHelp">
+        </div>
 
-        Address
+        Address1
+
         <div class="form-group">
             <label for="exampleInputEmakil1">city</label>
             <input type="text" name="city" class="form-control" id="examkplheInputEmakkil1" aria-describedby="emailHelp">
@@ -38,11 +47,22 @@
             <label for="exampleInputEmakil1">street</label>
             <input type="text" name="street" class="form-control" id="exampleInkputEmakil1" aria-describedby="emailHelp">
         </div>
+        Address2
+
+        <div class="form-group">
+            <label for="exampleInputEmakil1">city</label>
+            <input type="text" name="city1" class="form-control" id="exakmkplheInputEmakkil1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmakil1">street</label>
+            <input type="text" name="street1" class="form-control" id="exampjleInkputEmakil1" aria-describedby="emailHelp">
+        </div>
 
         <div class="form-group">
             <label >Role select</label>
-            <select class="form-control" >
-                <option th:each="role : ${roleList}" name="role" th:value="${role}" th:text="${role}"></option>
+            <select class="form-control" id="role" name="role">
+                <option th:each="role : ${roleList}"  th:value="${role}" th:text="${role}"></option>
             </select>
         </div>
 

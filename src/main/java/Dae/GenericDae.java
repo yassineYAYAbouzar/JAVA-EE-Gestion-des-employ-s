@@ -1,5 +1,7 @@
 package Dae;
 
+import Entities.Address;
+
 import java.io.Serializable;
 import java.util.List;
 

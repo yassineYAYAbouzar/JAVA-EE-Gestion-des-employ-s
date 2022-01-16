@@ -1,6 +1,7 @@
 package Database;
 
 import Entities.Address;
+import Entities.Contact;
 import Entities.Employee;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -40,6 +41,7 @@ public class HibernateUtil {
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(Employee.class);
                 configuration.addAnnotatedClass(Address.class);
+                configuration.addAnnotatedClass(Contact.class);
 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

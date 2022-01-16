@@ -1,6 +1,8 @@
 package Presentation;
 
 import Dae.EmployeeImp;
+import Entities.Address;
+import Entities.Contact;
 import Entities.Employee;
 import Entities.Role;
 import Presentation.config.ThymleafConfig;
@@ -58,13 +60,23 @@ public class UpdateEmployeeServlet extends HttpServlet {
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
 
+        String street = request.getParameter("street");
+        String city = request.getParameter("city");
+
+        Integer fix = Integer.valueOf(request.getParameter("fix"));
+        Integer mobile = Integer.valueOf(request.getParameter("mobile"));
 
         Employee employee = new Employee();
+        Contact contact = new Contact();
+        contact.setMobileNumber(fix);
+        contact.setFixNumber(mobile);
         employee.setFirstName(firstName);
         employee.setId(Long.valueOf(id));
         employee.setLastName(lastName);
         employee.setEmail(email);
-        employee.setRole(Role.EMPLOYEE);
+        employee.setRole(Role.valueOf(request.getParameter("role")));
+        employee.setContact(contact);
+        employee.getAddresses().add(new Address(street,city,employee));
         EmployeeImp employeeImp =new EmployeeImp();
         try {
             employee=  employeeImp.updateElement(employee);

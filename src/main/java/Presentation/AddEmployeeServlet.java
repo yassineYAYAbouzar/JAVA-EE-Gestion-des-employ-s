@@ -2,6 +2,7 @@ package Presentation;
 
 import Dae.EmployeeImp;
 import Entities.Address;
+import Entities.Contact;
 import Entities.Employee;
 import Entities.Role;
 import Presentation.config.ThymleafConfig;
@@ -49,16 +50,31 @@ public class AddEmployeeServlet extends HttpServlet {
 
         String street = request.getParameter("street");
         String city = request.getParameter("city");
+        String street1 = request.getParameter("street1");
+        String city1 = request.getParameter("city1");
+
+
+
+        Integer fix = Integer.valueOf(request.getParameter("fix"));
+        Integer mobile = Integer.valueOf(request.getParameter("mobile"));
+
+
+
 
 
 
         EmployeeImp employeeImp = new EmployeeImp();
         Employee employee=new Employee() ;
+        Contact contact = new Contact();
+        contact.setMobileNumber(fix);
+        contact.setFixNumber(mobile);
         employee.setFirstName(firstName);
         employee.setEmail(email);
         employee.setLastName(lastName);
-        employee.setRole(Role.EMPLOYEE);
+        employee.setRole(Role.valueOf(request.getParameter("role")));
+        employee.setContact(contact);
         employee.getAddresses().add(new Address(street,city,employee));
+        employee.getAddresses().add(new Address(street1,city1,employee));
         try {
             employee = employeeImp.insertElement(employee);
             HttpSession session = request.getSession(true);

@@ -34,6 +34,11 @@ public class EmployeeRepositoryImp implements GenericRepo<Employee, Long> {
     }
 
     @Override
+    public List<Employee> getAllEmployesWithAdresses() {
+        return null;
+    }
+
+    @Override
     public Employee findByEmailAndPassword(String email, String password) {
         Transaction transaction = null;
         Employee employee = null;

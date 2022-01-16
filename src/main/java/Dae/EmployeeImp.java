@@ -1,6 +1,7 @@
 package Dae;
 
 
+import Entities.Address;
 import Entities.Employee;
 import Database.HibernateUtil;
 import org.hibernate.Session;
@@ -46,13 +47,14 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
     public List<Employee> selectAllElements() {
 
         Transaction transaction = null;
-        List<Employee> employeeList = null;
+        List<Employee> employeeList=null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
 
-            employeeList = session.createQuery("from Employee").getResultList();
+             employeeList = session.createQuery("from Employee",Employee.class).getResultList();
 
             transaction.commit();
+            return  employeeList;
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
