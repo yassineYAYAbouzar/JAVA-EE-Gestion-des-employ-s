@@ -26,8 +26,8 @@ public class EmployeeServlet extends HttpServlet {
         WebContext context = new WebContext(request,response,request.getServletContext());
         HttpSession session = request.getSession();
 
-        context.setVariable("sessionEmployee", session.getAttribute("sessionEmployee"));
-        System.out.println(session.getAttribute("sessionEmployee"));
+       // context.setVariable("sessionEmployee", session.getAttribute("sessionEmployee"));
+        //System.out.println(session.getAttribute("sessionEmployee"));
         EmployeeImp employeeImp = new EmployeeImp();
         List<Employee> employeeList =employeeImp.selectAllElements();
         List<Role> roleList = new ArrayList<>();

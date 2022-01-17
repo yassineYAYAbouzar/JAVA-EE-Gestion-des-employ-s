@@ -1,9 +1,0 @@
-127.0.0.1 - - [16/Jan/2022:22:43:25 +0100] "GET /untitled/employee/profile?employeId=1 HTTP/1.1" 200 4111 http-bio-8080-exec-1 1516
-127.0.0.1 - - [16/Jan/2022:22:43:37 +0100] "GET /untitled/employee/ HTTP/1.1" 200 2608 http-bio-8080-exec-3 7
-127.0.0.1 - - [16/Jan/2022:22:43:45 +0100] "POST /untitled/login/auth HTTP/1.1" 200 4435 http-bio-8080-exec-4 131
-127.0.0.1 - - [16/Jan/2022:22:43:57 +0100] "POST /untitled/employee/delete HTTP/1.1" 200 4435 http-bio-8080-exec-5 18
-127.0.0.1 - - [16/Jan/2022:22:43:59 +0100] "GET /untitled/employee/delete HTTP/1.1" 405 1065 http-bio-8080-exec-6 3
-127.0.0.1 - - [16/Jan/2022:22:44:05 +0100] "GET /untitled/employee/add HTTP/1.1" 200 4612 http-bio-8080-exec-7 7
-127.0.0.1 - - [16/Jan/2022:22:44:12 +0100] "GET /untitled/employee/add HTTP/1.1" 200 4612 http-bio-8080-exec-8 2
-127.0.0.1 - - [16/Jan/2022:22:44:45 +0100] "POST /untitled/employee/add HTTP/1.1" 200 6106 http-bio-8080-exec-9 43
-127.0.0.1 - - [16/Jan/2022:22:44:51 +0100] "GET /untitled/employee/show?employeId=3 HTTP/1.1" 200 3143 http-bio-8080-exec-9 15

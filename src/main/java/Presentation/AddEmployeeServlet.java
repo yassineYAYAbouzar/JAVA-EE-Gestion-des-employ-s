@@ -83,7 +83,7 @@ public class AddEmployeeServlet extends HttpServlet {
                 context.setVariable("error", " failed! Error pleas enter a valid fields");
                 engine.process("addEmployee.html", context, response.getWriter());
             }else{
-                request.getRequestDispatcher("/employee").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/employee");
             }
 
         }catch (Exception e){

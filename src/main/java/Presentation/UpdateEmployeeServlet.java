@@ -82,7 +82,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
             employee=  employeeImp.updateElement(employee);
 
             context.setVariable("success", "Employee has ben Updated !");
-            request.getRequestDispatcher("/employee").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/employee");
 
         }catch (Exception e){
             if(employee.getId() == null){

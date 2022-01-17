@@ -17,8 +17,9 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpSession session = request.getSession();
-        if(session.getAttribute("sessionEmployee") == null && request.getRequestURI().endsWith("/employee")){
-            request.getRequestDispatcher("/untitled/login").forward(request, servletResponse);
+        System.out.println("helllo"+session.getAttribute("sessionEmployee"));
+        if(session.getAttribute("sessionEmployee") == null && request.getRequestURI().endsWith("/employee") ){
+            request.getRequestDispatcher("/login").forward(request, servletResponse);
         }else{
             filterChain.doFilter(request,servletResponse);
         }

@@ -39,11 +39,10 @@ public class LoginServlet extends HttpServlet {
 
              HttpSession session = request.getSession(true);
              session.setAttribute("sessionEmployee", employee);
-             request.getRequestDispatcher("/employee").forward(request, response);
+             response.sendRedirect(request.getContextPath() + "/employee");
         }catch (Exception e){
            context.setVariable("error", "Login failed! Error in email or password");
-            engine.process("login.html", context, response.getWriter());
-
+           engine.process("login.html", context, response.getWriter());
         }
 
 

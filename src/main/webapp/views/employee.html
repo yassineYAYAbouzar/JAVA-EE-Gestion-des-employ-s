@@ -15,7 +15,7 @@
             <span aria-hidden="true">&times;</span>
         </button>
     </div>
-        <a th:if="${sessionEmployee.role == admin }" href="/employee/add" th:href="@{/employee/add}" class="btn btn-primary my-3">Add Employee</a>
+        <a th:if="${sessionEmployee != null && sessionEmployee.role == admin }" href="/employee/add" th:href="@{/employee/add}" class="btn btn-primary my-3">Add Employee</a>
 
     <table class="table table-striped">
         <thead>
@@ -39,7 +39,7 @@
             <td><span class="d-block" th:each="address : ${currentEmployee.getAddresses()}" th:text="${address.street}"></span></td>
             <td><span class="d-block" th:each="address : ${currentEmployee.getAddresses()}" th:text="${address.city}"></span></td>
             <td th:text="${currentEmployee.role}"></td>
-            <td th:if="${sessionEmployee.role == admin }">
+            <td th:if="${sessionEmployee != null && sessionEmployee.role == admin }">
                 <a class="btn btn-mini btn-primary" th:href="@{/employee/update(employeId=${currentEmployee.id})}"><i class="icon-edit icon-white"></i> Edit</a>
                 <a class="btn btn-mini btn-primary" th:href="@{/employee/show(employeId=${currentEmployee.id})}"><i class="icon-edit icon-white"></i> Show</a>
                 <a class="btn btn-mini btn-danger" data-toggle="modal" th:href="'#confirm_delete_' + ${currentEmployee.id}"><i class="icon-remove icon-white"></i> Delete</a>

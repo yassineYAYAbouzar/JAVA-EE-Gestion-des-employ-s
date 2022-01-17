@@ -12,6 +12,6 @@ public class LogoutEmployeeServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().invalidate();
-        response.sendRedirect("/untitled/login/auth");
+        response.sendRedirect("login");
     }
 }

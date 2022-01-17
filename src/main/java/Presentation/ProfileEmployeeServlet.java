@@ -33,7 +33,7 @@ public class ProfileEmployeeServlet extends HttpServlet {
         }catch (Exception e){
             if(employee.getId() == null){
                 context.setVariable("error", " No Employee Yet");
-                request.getRequestDispatcher("/employee").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/employee");
             }
 
         }
@@ -58,7 +58,7 @@ public class ProfileEmployeeServlet extends HttpServlet {
             employee=  employeeRepositoryImp.changePassword(email ,password);
              System.out.println(employee);
             context.setVariable("success", "Employee has ben Updated !");
-            request.getRequestDispatcher("/employee").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/employee");
 
         }catch (Exception e){
            if(employee != 1){

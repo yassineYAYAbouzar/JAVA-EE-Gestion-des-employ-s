@@ -33,7 +33,7 @@ public class ShowEmployeeServlet extends HttpServlet {
         } catch (Exception e) {
             if (employee.getId() == null) {
                 context.setVariable("error", " No Employee Yet");
-                request.getRequestDispatcher("/employee").forward(request, response);
+                response.sendRedirect(request.getContextPath() + "/employee");
             }
 
         }

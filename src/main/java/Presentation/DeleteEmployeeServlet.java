@@ -28,7 +28,7 @@ public class DeleteEmployeeServlet extends HttpServlet {
         try {
              deleted = employeeImp.deleteElement(14L);
              context.setVariable("success", "Employee has ben deleted !");
-            request.getRequestDispatcher("/employee").forward(request, response);
+            response.sendRedirect(request.getContextPath() + "/employee");
 
         }catch (Exception e){
             if(deleted == false){
