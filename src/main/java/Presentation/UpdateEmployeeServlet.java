@@ -29,7 +29,7 @@ public class UpdateEmployeeServlet extends HttpServlet {
         EmployeeImp employeeImp = new EmployeeImp();
         Employee employee = null;
         try {
-             employee=  employeeImp.getElementById(Integer.parseInt(request.getParameter("employeId")));
+             employee=  employeeImp.getElementById(request.getParameter("employeId"));
             List<Role> roleList = new ArrayList<>();
             roleList.add(Role.EMPLOYEE);
             roleList.add(Role.ADMIN);

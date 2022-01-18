@@ -6,6 +6,7 @@ import Entities.Contact;
 import Entities.Employee;
 import Entities.Role;
 import Presentation.config.ThymleafConfig;
+import com.fasterxml.uuid.Generators;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
@@ -18,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet(name = "Presentation.AddEmployeeServlet" , urlPatterns ="/employee/add")
 public class AddEmployeeServlet extends HttpServlet {
@@ -75,6 +77,8 @@ public class AddEmployeeServlet extends HttpServlet {
         employee.setContact(contact);
         employee.getAddresses().add(new Address(street,city,employee));
         employee.getAddresses().add(new Address(street1,city1,employee));
+        UUID uuid = Generators.randomBasedGenerator().generate();
+        employee.setUserId(String.valueOf(uuid));
         try {
             employee = employeeImp.insertElement(employee);
             HttpSession session = request.getSession(true);

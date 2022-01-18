@@ -6,6 +6,7 @@ import Entities.Employee;
 import Database.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -28,13 +29,16 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         return new Employee();
     }
     @Override
-    public Employee getElementById(long id) {
+    public Employee getElementById(String userId) {
         Transaction transaction = null;
         Employee employee = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            employee = session.get(Employee.class, id);
+            Query query =  session.createQuery("from Employee u where u.userId = :userId");
+            query.setParameter("userId", userId);
+            List list = query.list();
             transaction.commit();
+            return (Employee) list.get(0);
         } catch (Exception e) {
             if (transaction != null) {
                 transaction.rollback();
@@ -64,17 +68,14 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         return employeeList;
     }
     @Override
-    public boolean deleteElement(Long id) {
+    public boolean deleteElement(String userId) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-
-            Employee employee = session.get(Employee.class, id);
-            if (employee != null) {
-                session.remove(employee);
-                return true;
-            }
-
+            Query query =  session.createQuery("from Employee u where u.userId = :userId");
+            query.setParameter("userId", userId);
+            List list = query.list();
+            session.remove((list.get(0)));
             transaction.commit();
         } catch (Exception e) {
             if (transaction != null) {

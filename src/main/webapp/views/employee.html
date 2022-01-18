@@ -20,19 +20,17 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th scope="col">ID</th>
             <th scope="col">firstName</th>
             <th scope="col">lastName</th>
             <th scope="col">email</th>
             <th scope="col">street</th>
             <th scope="col">city</th>
             <th scope="col">role</th>
-            <th scope="col">action</th>
+            <th scope="col" th:if="${session.sessionEmployee != null && session.sessionEmployee.role == admin }">action</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="currentEmployee : ${employeeList}">
-            <td th:text="${currentEmployee.id}"></td>
             <td th:text="${currentEmployee.firstName}"></td>
             <td th:text="${currentEmployee.lastName}"></td>
             <td th:text="${currentEmployee.email}"></td>
@@ -40,8 +38,8 @@
             <td><span class="d-block" th:each="address : ${currentEmployee.getAddresses()}" th:text="${address.city}"></span></td>
             <td th:text="${currentEmployee.role}"></td>
             <td th:if="${session.sessionEmployee != null && session.sessionEmployee.role == admin }">
-                <a class="btn btn-mini btn-primary" th:href="@{/employee/update(employeId=${currentEmployee.id})}"><i class="icon-edit icon-white"></i> Edit</a>
-                <a class="btn btn-mini btn-primary" th:href="@{/employee/show(employeId=${currentEmployee.id})}"><i class="icon-edit icon-white"></i> Show</a>
+                <a class="btn btn-mini btn-primary" th:href="@{/employee/update(employeId=${currentEmployee.userId})}"><i class="icon-edit icon-white"></i> Edit</a>
+                <a class="btn btn-mini btn-primary" th:href="@{/employee/show(employeId=${currentEmployee.userId})}"><i class="icon-edit icon-white"></i> Show</a>
                 <a class="btn btn-mini btn-danger" data-toggle="modal" th:href="'#confirm_delete_' + ${currentEmployee.id}"><i class="icon-remove icon-white"></i> Delete</a>
                 <div class="modal hide" th:id="'confirm_delete_' + ${currentEmployee.id}">
                     <div class="modal-header">
@@ -49,11 +47,11 @@
                         <h3>Confirmation</h3>
                     </div>
                     <div class="modal-body">
-                        <p th:text="|Are you sure to delete todo ${currentEmployee.id} | + '\'' + ${currentEmployee.email} + '\'' + '?'"></p>
+                        <p th:text="|Are you sure to delete todo ${currentEmployee.userId} | + '\'' + ${currentEmployee.email} + '\'' + '?'"></p>
                     </div>
                     <div class="modal-footer">
                         <form action="/employee/delete" th:action="@{/employee/delete}" method="post">
-                            <input type="hidden" name="id" th:value="${currentEmployee.id}">
+                            <input type="hidden" name="userId" th:value="${currentEmployee.userId}">
                             <a href="#" class="btn" data-dismiss="modal">Cancel</a> <button type="submit" class="btn btn-primary">Confirm</button>
                         </form>
                     </div>

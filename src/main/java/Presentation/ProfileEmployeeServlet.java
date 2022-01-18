@@ -25,7 +25,7 @@ public class ProfileEmployeeServlet extends HttpServlet {
         EmployeeImp employeeImp = new EmployeeImp();
         Employee employee = null;
         try {
-             employee=  employeeImp.getElementById(Integer.parseInt(request.getParameter("employeId")));
+             employee=  employeeImp.getElementById(request.getParameter("employeId"));
 
             context.setVariable("employee", employee);
             engine.process("profileEmployee.html" ,context ,response.getWriter());

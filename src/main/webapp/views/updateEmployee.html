@@ -41,18 +41,43 @@
             <input type="text" name="fix" class="form-control" th:value="${employee.getContact().fixNumber}" id="examplesInpustEmakil1" aria-describedby="emailHelp">
         </div>
 
+        <div th:text="${employee.getAddresses().size()}"></div>
         Address
-        <div th:each="address : ${employee.getAddresses()}">
+        <div th:if="${employee.getAddresses().size() != 0}" th:each="address : ${employee.getAddresses()}">
             <div class="form-group">
                 <label for="exampleInputEmakil1">city</label>
-                <input type="text" th:value="${address.city}" name="city" class="form-control" id="examkplheInputEmakkil1" aria-describedby="emailHelp">
+                <input type="text" th:value="${address.city}" name="city" class="form-control" id="examkplhejInputEmakkil1" aria-describedby="emailHelp">
             </div>
 
             <div class="form-group">
                 <label for="exampleInputEmakil1">street</label>
-                <input type="text" th:value="${address.street}" name="street" class="form-control" id="exampleInkputEmakil1" aria-describedby="emailHelp">
+                <input type="text" th:value="${address.street}" name="street" class="form-control" id="exampjleInkpjutEmakil1" aria-describedby="emailHelp">
             </div>
         </div>
+        <div th:unless="${employee.getAddresses().size() != 0}">
+            Address1
+            <div class="form-group">
+                <label for="exampleInputEmakil1">city</label>
+                <input type="text" name="city" class="form-control" id="examkplheInputEmakkil1" aria-describedby="emailHelp">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmakil1">street</label>
+                <input type="text" name="street" class="form-control" id="exampleInkputEmakil1" aria-describedby="emailHelp">
+            </div>
+            Address2
+
+            <div class="form-group">
+                <label for="exampleInputEmakil1">city</label>
+                <input type="text" name="city1" class="form-control" id="exakmkplheInputEmakkil1" aria-describedby="emailHelp">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmakil1">street</label>
+                <input type="text" name="street1" class="form-control" id="exampjleInkputEmakil1" aria-describedby="emailHelp">
+            </div>
+        </div>
+
 
         <div class="form-group">
             <label >Role select</label>

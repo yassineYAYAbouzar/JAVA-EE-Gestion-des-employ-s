@@ -1,13 +1,6 @@
-import Dae.AddressImp;
 import Dae.EmployeeImp;
-import Database.HibernateUtil;
-import Entities.Address;
 import Entities.Employee;
-import Entities.Role;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class Main {

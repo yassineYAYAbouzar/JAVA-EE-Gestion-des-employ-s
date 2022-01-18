@@ -12,6 +12,7 @@ import java.util.Set;
 @SuperBuilder
 @Getter
 @NoArgsConstructor
+@ToString
 @AllArgsConstructor
 @Entity
 @Table(name = "employee_table")
@@ -20,6 +21,7 @@ public class Employee {
     @Id
     @GeneratedValue
     private Long id;
+    private String userId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "last_name")

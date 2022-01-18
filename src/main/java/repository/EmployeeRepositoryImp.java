@@ -20,8 +20,6 @@ public class EmployeeRepositoryImp implements GenericRepo<Employee, Long> {
             Query query =  session.createQuery("from Employee u where u.email = :email");
             query.setParameter("email", email);
             List list = query.list();
-            System.out.println(list.get(0));
-
             transaction.commit();
             return (Employee) list.get(0);
         } catch (Exception e) {

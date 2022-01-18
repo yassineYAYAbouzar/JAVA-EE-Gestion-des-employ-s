@@ -26,7 +26,9 @@ public class DeleteEmployeeServlet extends HttpServlet {
         EmployeeImp employeeImp =new EmployeeImp();
         Boolean deleted =false;
         try {
-             deleted = employeeImp.deleteElement(14L);
+            String userId = request.getParameter("userId");
+            System.out.println(userId);
+             deleted = employeeImp.deleteElement(userId);
              context.setVariable("success", "Employee has ben deleted !");
             response.sendRedirect(request.getContextPath() + "/employee");
 

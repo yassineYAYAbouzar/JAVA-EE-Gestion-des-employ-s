@@ -7,9 +7,9 @@ import java.util.List;
 
 public interface GenericDae<T , Long> extends Serializable {
     T insertElement(T t) ;
-    T getElementById(long id);
+    T getElementById(String id);
     List<T> selectAllElements();
-    boolean deleteElement(Long id);
+    boolean deleteElement(String userId);
     T updateElement(T t) ;
 }
 
