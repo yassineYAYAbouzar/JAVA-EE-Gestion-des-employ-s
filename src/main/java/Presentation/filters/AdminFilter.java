@@ -1,15 +1,19 @@
 package Presentation.filters;
 
+import Entities.Employee;
+import Entities.Role;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 
-@WebFilter(urlPatterns = "/employee/*")
-public class AuthFilter implements Filter {
+@WebFilter(urlPatterns = {"/employee/add" , "/employee/update" ,"/employee/delete" })
+public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
            System.out.println("runn");
@@ -21,8 +25,11 @@ public class AuthFilter implements Filter {
         HttpServletResponse response = (HttpServletResponse) servletResponse;
         HttpSession session = request.getSession();
         System.out.println("helllo"+session.getAttribute("sessionEmployee"));
-        if(session.getAttribute("sessionEmployee") == null ){
-           response.sendRedirect(request.getContextPath() + "/login");
+        Employee admin =(Employee) session.getAttribute("sessionEmployee");
+        System.out.println(admin.getRole());
+        if(admin.getRole() != Role.ADMIN){
+            //request.getRequestDispatcher("/login").forward(request, servletResponse);
+            response.sendRedirect(request.getContextPath() + "/employee");
         }else{
             filterChain.doFilter(request,servletResponse);
         }
