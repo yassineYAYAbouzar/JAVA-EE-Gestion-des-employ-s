@@ -9,6 +9,7 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Getter
@@ -19,9 +20,13 @@ import javax.persistence.Id;
 @Entity
 public class Contact {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer mobileNumber;
     private Integer fixNumber;
 
+    public Contact(Integer mobileNumber, Integer fixNumber) {
+        this.mobileNumber = mobileNumber;
+        this.fixNumber = fixNumber;
+    }
 }

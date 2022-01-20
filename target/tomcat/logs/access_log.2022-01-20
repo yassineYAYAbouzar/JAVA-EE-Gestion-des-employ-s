@@ -1,0 +1,11 @@
+127.0.0.1 - - [20/Jan/2022:09:56:01 +0100] "GET /untitled/ HTTP/1.1" 200 2608 http-bio-8080-exec-1 258
+127.0.0.1 - - [20/Jan/2022:09:56:01 +0100] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:56:22 +0100] "GET /untitled HTTP/1.1" 302 - http-bio-8080-exec-5 0
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:56:22 +0100] "GET /untitled/ HTTP/1.1" 200 2608 http-bio-8080-exec-7 3
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:56:22 +0100] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-8 0
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:56:28 +0100] "POST /untitled/login/auth HTTP/1.1" 200 2728 http-bio-8080-exec-9 1303
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:57:30 +0100] "POST /untitled/login/auth HTTP/1.1" 302 - http-bio-8080-exec-1 74
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:57:30 +0100] "GET /untitled/employee HTTP/1.1" 200 6027 http-bio-8080-exec-1 56
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:57:36 +0100] "GET /untitled/employee/update?employeId=87e935ca-fdf1-47b6-a935-cafdf197b632 HTTP/1.1" 200 5157 http-bio-8080-exec-1 24
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:57:44 +0100] "POST /untitled/employee/update HTTP/1.1" 302 - http-bio-8080-exec-1 28
+0:0:0:0:0:0:0:1 - - [20/Jan/2022:09:57:44 +0100] "GET /untitled/employee HTTP/1.1" 200 5954 http-bio-8080-exec-1 19

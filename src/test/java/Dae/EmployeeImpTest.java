@@ -26,7 +26,7 @@ public class EmployeeImpTest extends TestCase {
                 .fixNumber(88)
                 .build();
         employee = employee.builder()
-                .email("yassinebouzar@gmail.com")
+                .email("yassinebouzar12346@gmail.com")
                 .password("password")
                 .lastName("yassine101")
                 .firstName("password")
@@ -59,17 +59,19 @@ public class EmployeeImpTest extends TestCase {
     }
 
     public void testGetEmployeeById() {
-        Employee employeeExpected =employeeImp.insertElement(employee1);
-        assertEquals(employeeExpected, employeeImp.getElementById(employeeExpected.getUserId()));
+       // Employee employeeExpected =employeeImp.insertElement(employee);
+        System.out.println(employeeImp.getElementById("0d6b9507-3116-4e89-ab95-073116be897d"));
+        assertNotNull(employeeImp.getElementById("0d6b9507-3116-4e89-ab95-073116be897d"));
     }
 
     public void testSelectAllEmployee() {
+        System.out.println(employeeImp.selectAllElements());
         assertNotNull(employeeImp.selectAllElements());
     }
 
     public void testDeleteEmployee() {
-        //Boolean expected  = employeeImp.deleteElement(3L);
-        //assertTrue(expected);
+        Boolean expected  = employeeImp.deleteElement("7d65779c-c186-4a5e-a577-9cc1861a5e68");
+        assertTrue(expected);
     }
 
     public void testUpdateEmployee() {

@@ -1,105 +1,111 @@
 package Dae;
 
 
+import Database.JPAutil;
 import Entities.Address;
 import Entities.Employee;
 import Database.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import java.util.List;
 
 public class EmployeeImp implements GenericDae<Employee, Long> {
 
     @Override
     public Employee insertElement(Employee employee) {
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.save(employee);
+        EntityManager entityManager = JPAutil.entityManagerFactory().createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+
+        try {
+            transaction.begin();
+
+            entityManager.persist(employee);
             transaction.commit();
             return employee;
-        } catch (Exception e) {
-            if (transaction != null) {
+        }finally {
+            if (transaction.isActive()){
                 transaction.rollback();
             }
-            e.printStackTrace();
+            entityManager.close();
         }
-        return new Employee();
     }
     @Override
     public Employee getElementById(String userId) {
-        Transaction transaction = null;
-        Employee employee = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            Query query =  session.createQuery("from Employee u where u.userId = :userId");
+        EntityManager entityManager = JPAutil.entityManagerFactory().createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+
+            Query query =  entityManager.createQuery("from Employee u where u.userId = :userId");
             query.setParameter("userId", userId);
-            List list = query.list();
             transaction.commit();
-            return (Employee) list.get(0);
-        } catch (Exception e) {
-            if (transaction != null) {
+            return (Employee) query.getResultList().get(0);
+        }finally {
+            if (transaction.isActive()){
                 transaction.rollback();
             }
-            e.printStackTrace();
+            entityManager.close();
         }
-        return employee;
     }
     @Override
     public List<Employee> selectAllElements() {
 
-        Transaction transaction = null;
+        EntityManager entityManager = JPAutil.entityManagerFactory().createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
         List<Employee> employeeList=null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
+        try {
+            transaction.begin();
 
-             employeeList = session.createQuery("from Employee",Employee.class).getResultList();
-
+            employeeList = entityManager.createQuery("from Employee",Employee.class).getResultList();
             transaction.commit();
             return  employeeList;
-        } catch (Exception e) {
-            if (transaction != null) {
+        }finally {
+            if (transaction.isActive()){
                 transaction.rollback();
             }
-            e.printStackTrace();
+            entityManager.close();
         }
-        return employeeList;
     }
     @Override
     public boolean deleteElement(String userId) {
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            Query query =  session.createQuery("from Employee u where u.userId = :userId");
+
+        EntityManager entityManager = JPAutil.entityManagerFactory().createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
+        try {
+            transaction.begin();
+
+            Query query =  entityManager.createQuery("from Employee u where u.userId = :userId");
             query.setParameter("userId", userId);
-            List list = query.list();
-            session.remove((list.get(0)));
+            entityManager.remove(query.getResultList().get(0));
             transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
+            return  true;
+        }finally {
+            if (transaction.isActive()){
                 transaction.rollback();
             }
-            e.printStackTrace();
+            entityManager.close();
         }
-        return false;
     }
     @Override
     public Employee updateElement(Employee employee)  {
+        EntityManager entityManager = JPAutil.entityManagerFactory().createEntityManager();
+        EntityTransaction transaction = entityManager.getTransaction();
 
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            transaction = session.beginTransaction();
-            session.saveOrUpdate(employee);
+        try {
+            transaction.begin();
+
+            entityManager.merge(employee);
             transaction.commit();
-            return  employee;
-        } catch (Exception e) {
-            if (transaction != null) {
+            return employee;
+        }finally {
+            if (transaction.isActive()){
                 transaction.rollback();
             }
-            e.printStackTrace();
+            entityManager.close();
         }
-        return new Employee();
     }
 }

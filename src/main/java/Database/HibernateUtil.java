@@ -12,11 +12,7 @@ import org.hibernate.service.ServiceRegistry;
 import javax.persistence.PersistenceUnit;
 import java.util.Properties;
 
-/**
- * Java based configuration
- * @author ramesh Fadatare
- *
- */
+
 @PersistenceUnit(name = "default")
 public class HibernateUtil {
     private static SessionFactory sessionFactory;
@@ -46,7 +42,6 @@ public class HibernateUtil {
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
-                System.out.println("Hibernate Java Config serviceRegistry created");
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
                 return sessionFactory;
 
