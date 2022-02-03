@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class EmployeeImpTest extends TestCase {
 
-    private EmployeeImp employeeImp = new EmployeeImp();
+    private EmployeeImp employeeImp = new EmployeeImp() ;
     private Employee employee;
     private Employee employee1;
     private Contact contact;
