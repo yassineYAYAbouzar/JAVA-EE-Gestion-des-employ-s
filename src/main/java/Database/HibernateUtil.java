@@ -33,6 +33,7 @@ public class HibernateUtil {
                 settings.put(Environment.USER, "postgres");
                 settings.put(Environment.PASS, "root");
 
+
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL10Dialect");
 
