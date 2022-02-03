@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 
 public class JPAutil {
    public static EntityManagerFactory entityManagerFactory(){
+//jenkins
        EntityManagerFactory entityManagerFactory= Persistence.createEntityManagerFactory("default");
        return entityManagerFactory;
    }
