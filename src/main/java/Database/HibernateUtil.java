@@ -25,7 +25,7 @@ public class HibernateUtil {
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "org.postgresql.Driver");
-                settings.put(Environment.URL, "jdbc:postgresql://localhost:5433/thymleaf");
+                //settings.put(Environment.URL, "jdbc:postgresql://localhost:5433/thymleaf");
                 settings.put(Environment.USER, "postgres");
                 settings.put(Environment.PASS, "root");
 

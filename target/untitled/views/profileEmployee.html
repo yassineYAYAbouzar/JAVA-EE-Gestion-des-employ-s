@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="component/header.html :: header"><title>Header Here FAKE</title></head>
+<body>
+<div th:replace="component/navigationmenu.html :: navbar"></div>
+<div class="container">
+
+    <div class="card my-4 mx-auto" style="width: 43rem;">
+        <div class="card-body">
+            <span style="line-height: 4em;">Fist Name         : <span class="card-title" th:text="${employee.firstName}"></span></span>
+            <br>
+            <span style="line-height: 4em;">Last Name         : <span class="card-title" th:text="${employee.lastName}">Welcome Mr :</span></span>
+            <br>
+            <span style="line-height: 4em;">Email             : <span class="card-text" th:text="${employee.email}"></span></span>
+            <br>
+            <span style="line-height: 4em;">Role              : <span class="card-text" th:text="${employee.role}"></span></span>
+            <br>
+            <span style="line-height: 4em;">mobileNumber      : <span class="card-text" th:text="${employee.getContact().mobileNumber}"></span></span>
+            <br>
+            <span style="line-height: 4em;">fixNumber         :<span class="card-text" th:text="${employee.getContact().fixNumber}"></span></span>
+            <br>
+            <span style="line-height: 4em;">Address           :<span th:each="address : ${employee.getAddresses()}">
+                    <span th:text="${address.city}"></span>
+                    <span th:text="${address.street}"></span>
+            </span></span>
+            <form method="post" class="m-5" action="/employee/profile" th:action="@{/employee/profile}">
+
+
+                <div th:text="${error}"  th:if="${error}" class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <input type="hidden" th:value="${employee.email}"  name="email" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmakil1">password</label>
+                    <input type="password" name="password"  class="form-control" id="examplheInputEmakkil1" aria-describedby="emailHelp">
+
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleInputEmakil1">confirm password</label>
+                    <input type="password" name="confirmPassword" class="form-control" id="exampleInputEmakil1" aria-describedby="emailHelp">
+                </div>
+
+
+                <button type="submit" class="btn btn-primary" >Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<footer th:replace="component/footer.html :: footer">Footer Here FAKE</footer>
+
+</body>
+</html>
