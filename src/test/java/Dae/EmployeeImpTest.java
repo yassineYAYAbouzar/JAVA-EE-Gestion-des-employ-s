@@ -25,13 +25,13 @@ public class EmployeeImpTest extends TestCase {
                 .fixNumber(88)
                 .build();
         employee = employee.builder()
-                .email("yassinebouzar@gmail.com")
+                .email("yassinebouza97@gmail.com")
                 .password("password")
                 .lastName("yassine101")
                 .firstName("password")
                 .userId(String.valueOf(Generators.randomBasedGenerator().generate()))
                 .contact(contact)
-                .role(Role.ADMIN)
+                .role(Role.EMPLOYEE)
                 .build();
         address = address.builder()
                 .city("myoussoufia")

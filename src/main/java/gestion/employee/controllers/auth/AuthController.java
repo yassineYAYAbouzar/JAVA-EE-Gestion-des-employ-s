@@ -6,9 +6,12 @@ import gestion.employee.repository.EmployeeRepositoryImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
@@ -47,12 +50,24 @@ public class AuthController {
     }
 
     //showEmployee employee
-    @GetMapping("/showProfile/{employeId}")
+    @GetMapping("/profile/{employeId}")
     public String showProfile(@ModelAttribute("employee") Employee employee ,@RequestParam("employeId") String employeeId,
                                Model model) {
         model.addAttribute("employee", employeeImp.getElementById(employeeId));
 
         return "profileEmployee";
+    }
+    //Save employee
+    @PostMapping("/updatePassword")
+    public String updatePassword(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, RedirectAttributes redirectAttributes) {
+        if(result.hasErrors()){
+            return "addEmployee";
+        }else {
+            employeeRepositoryImp.changePassword(employee.getEmail() , employee.getPassword());
+            redirectAttributes.addFlashAttribute("success" , "password updated !");
+            return "redirect:/employee/";
+        }
+
     }
 
 }

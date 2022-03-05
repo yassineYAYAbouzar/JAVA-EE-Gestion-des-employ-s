@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-@WebFilter(urlPatterns = {"/employee/add" , "/employee/update" ,"/employee/delete" })
+@WebFilter(urlPatterns = {"/employee/add" , "/employee/update?" ,"/employee/delete" })
 public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -25,7 +25,7 @@ public class AdminFilter implements Filter {
         HttpSession session = request.getSession();
         Employee admin =(Employee) session.getAttribute("sessionEmployee");
         if(admin.getRole() != Role.ADMIN){
-            response.sendRedirect(request.getContextPath() + "/employee");
+            response.sendRedirect(request.getContextPath() + "/");
         }else{
             filterChain.doFilter(request,servletResponse);
         }

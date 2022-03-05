@@ -23,7 +23,7 @@
                     <span th:text="${address.city}"></span>
                     <span th:text="${address.street}"></span>
             </span></span>
-            <form method="post" class="m-5" action="/employee/profile" th:action="@{/employee/profile}">
+            <form method="post" class="m-5" action="/employee/profile" th:action="@{/updatePassword}">
 
 
                 <div th:text="${error}"  th:if="${error}" class="alert alert-warning alert-dismissible fade show" role="alert">

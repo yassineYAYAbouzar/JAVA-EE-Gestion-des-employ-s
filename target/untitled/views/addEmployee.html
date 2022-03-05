@@ -4,7 +4,7 @@
 <body>
 <div th:replace="component/navigationmenu.html :: navbar"></div>
 <div class="container">
-    <form method="post" class="m-5" action="/employee/add" th:action="@{/employee/add}">
+    <form method="post" class="m-5" action="/employee/add" th:action="@{/employee/add}" >
 
 
         <div th:text="${error}"  th:if="${error}" class="alert alert-warning alert-dismissible fade show" role="alert">
