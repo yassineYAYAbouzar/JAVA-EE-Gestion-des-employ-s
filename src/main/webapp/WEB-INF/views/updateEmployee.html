@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="component/header.html :: header"><title>Header Here FAKE</title></head>
+<style>
+    .error{
+        color: red;
+    }
+</style>
+<body>
+<div th:replace="component/navigationmenu.html :: navbar"></div>
+<div class="container">
+    <form method="post" th:object="${employee}"  th:action="@{/employee/updateEmployee}">
+        <div th:if="${#fields.hasErrors('*')}">
+            <span th:each="err : ${#fields.errors('*')}" th:text="${err}" th:class="error">Input is incorrect</span>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmakil1">firstName</label>
+            <input type="firstName" th:field="*{firstName}" th:value="${employee.firstName}"  name="firstName" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <input type="hidden" th:field="*{id}" th:value="${employee.id}"  name="id" class="form-control">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmakil1">lastName</label>
+            <input type="lastName" name="lastName" th:field="*{lastName}" th:value="${employee.lastName}" class="form-control" id="examplheInputEmakkil1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmakil1">email Address</label>
+            <input type="email" name="email" th:field="*{email}" th:value="${employee.email}" class="form-control" id="exampleInputEmakil1" aria-describedby="emailHelp">
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmakil1">mobile Number</label>
+            <input type="text" name="mobile" class="form-control"  th:field="*{contact.mobileNumber}" th:value="${employee.getContact().mobileNumber}" id="examplesInputEmakil1" aria-describedby="emailHelp">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmakil1">fix Number</label>
+            <input type="text" name="fix" class="form-control" th:field="*{contact.fixNumber}" th:value="${employee.getContact().fixNumber}" id="examplesInpustEmakil1" aria-describedby="emailHelp">
+        </div>
+        <div  th:each="address : ${employee.getAddresses()}">
+            <div class="form-group">
+                <label for="exampleInputEmakil1">city</label>
+                <input type="text" th:field="${address.city}" th:value="${address.city}" name="city" class="form-control" id="examkplhejInputEmakkil1" aria-describedby="emailHelp">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputEmakil1">street</label>
+                <input type="text"  th:field="${address.street}" th:value="${address.street}" name="street" class="form-control" id="exampjleInkpjutEmakil1" aria-describedby="emailHelp">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label >Role select</label>
+            <select class="form-control" id="role" name="role">
+                <option th:each="role : ${roleList}"  th:value="${role}" th:text="${role}"></option>
+            </select>
+        </div>
+
+
+        <button type="submit" class="btn btn-primary" style="width: 13%">Submit</button>
+    </form>
+</div>
+
+
+<footer th:replace="component/footer.html :: footer">Footer Here FAKE</footer>
+
+</body>
+</html>

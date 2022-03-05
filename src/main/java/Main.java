@@ -1,5 +1,5 @@
-import Dae.EmployeeImp;
-import Entities.Employee;
+import gestion.employee.Dae.EmployeeImp;
+import gestion.employee.Entities.Employee;
 
 import java.util.List;
 

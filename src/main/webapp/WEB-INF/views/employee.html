@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="component/header.html :: header"><title>Header Here FAKE</title></head>
+<body>
+<div th:replace="component/navigationmenu.html :: navbar"></div>
+<div class="m-3">
+
+    <div th:text="${success}"  th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div th:text="${error}"  th:if="${error}" class="alert alert-success alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <a  href="/employee/add" th:href="@{/employee/add}" class="btn btn-primary my-3">Add Employee</a>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">firstName</th>
+            <th scope="col">lastName</th>
+            <th scope="col">email</th>
+            <th scope="col">street</th>
+            <th scope="col">city</th>
+            <th scope="col">role</th>
+            <th scope="col">action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="currentEmployee : ${employeeList}">
+            <td th:text="${currentEmployee.firstName}"></td>
+            <td th:text="${currentEmployee.lastName}"></td>
+            <td th:text="${currentEmployee.email}"></td>
+            <td><span class="d-block" th:each="address : ${currentEmployee.getAddresses()}" th:text="${address.street}"></span></td>
+            <td><span class="d-block" th:each="address : ${currentEmployee.getAddresses()}" th:text="${address.city}"></span></td>
+            <td th:text="${currentEmployee.role}"></td>
+            <td >
+                <a class="btn btn-mini btn-primary" th:href="@{/employee/update/update(employeId=${currentEmployee.userId})}"><i class="icon-edit icon-white"></i> Edit</a>
+                <a class="btn btn-mini btn-primary" th:href="@{/employee/delete(employeId=${currentEmployee.userId})}"><i class="icon-remove icon-white"> delete</a>
+                <a class="btn btn-mini btn-primary" th:href="@{/employee/show/show(employeId=${currentEmployee.userId})}"><i class="icon-edit icon-white"></i> Show</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<footer th:replace="component/footer.html :: footer">Footer Here FAKE</footer>
+
+</body>
+</html>

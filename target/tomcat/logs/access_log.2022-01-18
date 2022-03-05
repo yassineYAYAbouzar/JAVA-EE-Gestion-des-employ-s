@@ -1,7 +1,0 @@
-0:0:0:0:0:0:0:1 - - [18/Jan/2022:22:28:06 +0100] "GET /untitled/employee/update?employeId=f6e3e8eb-31c9-418f-a3e8-eb31c9118f35 HTTP/1.1" 302 - http-bio-8080-exec-1 33
-0:0:0:0:0:0:0:1 - - [18/Jan/2022:22:28:06 +0100] "GET /untitled/login HTTP/1.1" 200 2608 http-bio-8080-exec-3 403
-0:0:0:0:0:0:0:1 - - [18/Jan/2022:22:28:12 +0100] "POST /untitled/login/auth HTTP/1.1" 302 - http-bio-8080-exec-4 2041
-0:0:0:0:0:0:0:1 - - [18/Jan/2022:22:28:12 +0100] "GET /untitled/employee HTTP/1.1" 200 4405 http-bio-8080-exec-5 76
-0:0:0:0:0:0:0:1 - - [18/Jan/2022:22:28:13 +0100] "GET /untitled/employee/update?employeId=f6e3e8eb-31c9-418f-a3e8-eb31c9118f35 HTTP/1.1" 200 5153 http-bio-8080-exec-6 24
-0:0:0:0:0:0:0:1 - - [18/Jan/2022:22:28:25 +0100] "POST /untitled/employee/update HTTP/1.1" 302 - http-bio-8080-exec-7 35
-0:0:0:0:0:0:0:1 - - [18/Jan/2022:22:28:25 +0100] "GET /untitled/employee HTTP/1.1" 200 4336 http-bio-8080-exec-8 18
