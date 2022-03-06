@@ -7,9 +7,10 @@ import gestion.employee.Entities.Role;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
+@Repository
 public class EmployeeRepositoryImp implements GenericRepo<Employee, Long> {
     @Override
     public Employee findByEmail(String email) {

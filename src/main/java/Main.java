@@ -10,12 +10,7 @@ public class Main {
         //transaction = session.beginTransaction();
         //TypedQuery<Employee> employeeList = session.createQuery("from Employee",Employee.class);
         //transaction.commit();
-        EmployeeImp employeeImp = new EmployeeImp();
-        List<Employee> selectAllElements= employeeImp.selectAllElements();
 
-        for (int i = 0 ; i <selectAllElements.get(0).getAddresses().size() ; i++){
-            System.out.println(selectAllElements.get(0).getAddresses());
-        }
 
     }
 }

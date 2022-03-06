@@ -35,7 +35,7 @@ public class AppContext {
         LocalSessionFactoryBean sessionFactory=new LocalSessionFactoryBean();
         sessionFactory.setDataSource(datasource());
         sessionFactory.setPackagesToScan(new String[]{
-                "gestion.employee.entities"
+                "gestion.employee.Entities"
         });
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
@@ -44,7 +44,7 @@ public class AppContext {
     // properties of hibernate
     private Properties hibernateProperties() {
          Properties properties=new Properties();
-        properties.put("hibernate.hbm2ddl.auto", "update");
+        properties.put("hibernate.hbm2ddl.auto", "create");
         properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL10Dialect");
         properties.put("hibernate.show_sql","true");
         properties.put("hibernate.format_sql","true");

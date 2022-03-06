@@ -1,7 +1,6 @@
 package gestion.employee.Dae;
 
 
-import com.fasterxml.uuid.Generators;
 import gestion.employee.Entities.Employee;
 import gestion.employee.Database.HibernateUtil;
 import org.hibernate.Session;
@@ -18,7 +17,6 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         Transaction transaction = null;
 
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            employee.setUserId(String.valueOf(Generators.randomBasedGenerator().generate()));
             transaction = session.beginTransaction();
             session.save(employee);
             transaction.commit();
