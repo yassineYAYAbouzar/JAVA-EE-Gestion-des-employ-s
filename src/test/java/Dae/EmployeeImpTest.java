@@ -25,7 +25,7 @@ public class EmployeeImpTest extends TestCase {
                 .fixNumber(88)
                 .build();
         employee = employee.builder()
-                .email("yassinebouza9q7@gmail.com")
+                .email("yassinebosuzaq9q7@gmail.com")
                 .password("password")
                 .lastName("yassine101")
                 .firstName("password")

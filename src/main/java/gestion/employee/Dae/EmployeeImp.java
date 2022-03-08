@@ -92,7 +92,7 @@ public class EmployeeImp implements GenericDae<Employee, Long> {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(employee);
+            session.update(employee);
             transaction.commit();
             return  employee;
         } catch (Exception e) {

@@ -5,6 +5,7 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -43,12 +44,12 @@ public class AppContext {
 
     // properties of hibernate
     private Properties hibernateProperties() {
-         Properties properties=new Properties();
-        properties.put("hibernate.hbm2ddl.auto", "create");
+        Properties properties=new Properties();
+        properties.put("hibernate.hbm2ddl.auto", "update");
         properties.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQL10Dialect");
         properties.put("hibernate.show_sql","true");
         properties.put("hibernate.format_sql","true");
-         return  properties;
+        return  properties;
     }
 
     // transaction manager
