@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import java.util.Properties;
 
 @Configuration
-@EnableTransactionManagement
+@EnableTransactionManagement(proxyTargetClass = true)
 public class AppContext {
     @Autowired
     private Environment environment;

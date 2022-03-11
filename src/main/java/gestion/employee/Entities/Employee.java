@@ -5,6 +5,8 @@ import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,22 +25,31 @@ public class Employee {
     @GeneratedValue
     private Long id;
     private String userId;
-    @Size(min = 2, max = 18, message = "First Name must be between 2 and 18")
+    @NonNull
+    @Size(min = 2, max = 18 , message = "firstName size must be between 2 and 18")
     @Column(name = "first_name")
     private String firstName;
+    @NonNull
+    @Size(min = 2, max = 18 , message = "lastName size must be between 2 and 18")
     @Column(name = "last_name")
     private String lastName;
     @Column(unique = true ,length = 70)
+    @NonNull
+    @Size(min = 2, max = 18)
+    @Email
     private String email;
+    @NonNull
+    @Size(min = 4, max = 18)
     private String password;
-
     private Role role ;
 
     @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     @JoinColumn(name = "contact_id" )
     @Valid
     private Contact contact;
-    @OneToMany(mappedBy = "employee" ,cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
-    Set<Address> addresses = new HashSet<>();
+    @OneToOne(cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
+    @JoinColumn(name = "address_id" )
+    @Valid
+    private Address address ;
 
 }

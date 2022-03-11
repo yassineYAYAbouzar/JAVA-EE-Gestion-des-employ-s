@@ -19,10 +19,9 @@
             <br>
             <span style="line-height: 4em;">fixNumber         :<span class="card-text" th:text="${employee.getContact().fixNumber}"></span></span>
             <br>
-            <span style="line-height: 4em;">Address           :<span th:each="address : ${employee.getAddresses()}">
-                    <span th:text="${address.city}"></span>
-                    <span th:text="${address.street}"></span>
-            </span></span>
+            <span style="line-height: 4em;">City         :<span class="card-text" th:text="${employee.getAddress().city}"></span></span>
+            <br>
+            <span style="line-height: 4em;">street         :<span class="card-text" th:text="${employee.getAddress().street}"></span></span>
         </div>
     </div>
 

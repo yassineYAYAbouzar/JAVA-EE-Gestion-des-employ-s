@@ -1,8 +1,7 @@
 package gestion.employee.controllers.auth;
 
-import gestion.employee.Dae.EmployeeImp;
 import gestion.employee.Entities.Employee;
-import gestion.employee.repository.EmployeeRepositoryImp;
+import gestion.employee.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +16,9 @@ import javax.validation.Valid;
 @RequestMapping("/")
 @SessionAttributes({"sessionEmployee"})
 public class UserController {
-    EmployeeRepositoryImp employeeRepositoryImp ;
-    EmployeeImp employeeImp;
     @Autowired
-    public UserController(EmployeeImp employeeImp , EmployeeRepositoryImp employeeRepositoryImp) {
-        this.employeeImp = employeeImp;
-        this.employeeRepositoryImp = employeeRepositoryImp;
-    }
+    private EmployeeService employeeService;
+
 
    //get Login Page
     @GetMapping("/")
@@ -35,7 +30,7 @@ public class UserController {
     @PostMapping("/login")
     public String login(@ModelAttribute("employee") Employee employee , Model model , HttpSession session) {
         try {
-            session.setAttribute("sessionEmployee", employeeRepositoryImp.findByEmailAndPassword(employee.getEmail(),employee.getPassword()));
+            session.setAttribute("sessionEmployee", employeeService.findByEmailAndPassword(employee.getEmail(),employee.getPassword()));
         }catch (Exception e){
             model.addAttribute("error", "Login failed! Error in email or password");
             return "login";
@@ -47,7 +42,7 @@ public class UserController {
     @GetMapping("/profile/{employeId}")
     public String showProfile(@ModelAttribute("employee") Employee employee ,@RequestParam("employeId") String employeeId,
                                Model model) {
-        model.addAttribute("employee", employeeImp.getElementById(employeeId));
+        model.addAttribute("employee", employeeService.getEmployee(employeeId));
 
         return "profileEmployee";
     }
@@ -57,7 +52,7 @@ public class UserController {
         if(result.hasErrors()){
             return "addEmployee";
         }else {
-            employeeRepositoryImp.changePassword(employee.getEmail() , employee.getPassword());
+            employeeService.changePassword(employee.getEmail() , employee.getPassword());
             redirectAttributes.addFlashAttribute("success" , "password updated !");
             return "redirect:/employee/";
         }

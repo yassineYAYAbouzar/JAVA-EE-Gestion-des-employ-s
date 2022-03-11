@@ -18,6 +18,7 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <springmvc.v>5.2.4.RELEASE</springmvc.v>
+    <hibernatecore>5.4.12.Final</hibernatecore>
   </properties>
 
   <dependencies>
@@ -75,7 +76,7 @@
     <dependency>
       <groupId>org.hibernate</groupId>
       <artifactId>hibernate-validator</artifactId>
-      <version>7.0.1.Final</version>
+      <version>6.0.17.Final</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -88,7 +89,12 @@
       <artifactId>spring-orm</artifactId>
       <version>${springmvc.v}</version>
     </dependency>
-
+    <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+    <dependency>
+      <groupId>org.hibernate</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>${hibernatecore}</version>
+    </dependency>
     <!-- Datasoruce !-->
     <dependency>
       <groupId>commons-dbcp</groupId>

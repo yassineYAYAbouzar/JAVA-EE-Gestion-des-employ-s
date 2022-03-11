@@ -1,9 +1,9 @@
 package gestion.employee.controllers.employee;
 
-import gestion.employee.Dae.EmployeeImp;
 import gestion.employee.Entities.Address;
 import gestion.employee.Entities.Employee;
 import gestion.employee.Entities.Role;
+import gestion.employee.services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +18,9 @@ import java.util.List;
 @Controller
 @RequestMapping("employee")
 public class EmployeeController {
-
-    EmployeeImp employeeImp;
     @Autowired
-    public EmployeeController(EmployeeImp employeeImp) {
-        this.employeeImp = employeeImp;
-    }
+    private EmployeeService employeeService;
+
 
     @ModelAttribute("roleList")
     private List<Role> roleList(){
@@ -32,16 +29,13 @@ public class EmployeeController {
         roleList.add(Role.EMPLOYEE);
         return  roleList;
     }
-    @ModelAttribute("address")
-    private Address address(){
-        Address address= new Address();
-        return  address;
-    }
+
 
 
     @GetMapping("/")
     public String getAllEmployee(Model model) {
-        model.addAttribute("employeeList",employeeImp.selectAllElements());
+        model.addAttribute("admin" , Role.ADMIN);
+        model.addAttribute("employeeList",employeeService.getUsers());
         return "employee";
     }
 
@@ -54,12 +48,12 @@ public class EmployeeController {
     @PostMapping("/saveEmployee")
     public String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result, RedirectAttributes redirectAttributes) {
         if(result.hasErrors()){
+            redirectAttributes.addFlashAttribute("error" , "employee not saved");
             return "addEmployee";
-        }else {
-            employeeImp.insertElement(employee);
-            redirectAttributes.addFlashAttribute("success" , "employee saved");
-            return "redirect:/employee/";
         }
+        employeeService.saveUser(employee);
+        redirectAttributes.addFlashAttribute("success" , "employee saved");
+        return "redirect:/employee/";
 
     }
 
@@ -67,7 +61,7 @@ public class EmployeeController {
     @GetMapping("/show/{employeId}")
     public String showEmployee(@ModelAttribute("employee") Employee employee ,@RequestParam("employeId") String employeeId,
                                     Model model) {
-        model.addAttribute("employee", employeeImp.getElementById(employeeId));
+        model.addAttribute("employee", employeeService.getEmployee(employeeId));
 
         return "showEmployee";
     }
@@ -75,7 +69,7 @@ public class EmployeeController {
     @GetMapping("/update/{employeId}")
     public String showFormForUpdate(@RequestParam("employeId") String employeeId,
                                     Model model) {
-        model.addAttribute("employee", employeeImp.getElementById(employeeId));
+        model.addAttribute("employee",employeeService.getEmployee(employeeId));
         return "updateEmployee";
     }
 
@@ -85,7 +79,7 @@ public class EmployeeController {
         if(result.hasErrors()){
             return "updateEmployee";
         }else {
-            employeeImp.updateElement(employee);
+            employeeService.updateElement(employee);
             redirectAttributes.addFlashAttribute("success" , "employee saved");
             return "redirect:/employee/";
         }
@@ -94,7 +88,7 @@ public class EmployeeController {
     //Delete employee
     @GetMapping(path = "/{employeId}")
     public String deleteUser(@RequestParam("employeId") String employeId) {
-        employeeImp.deleteElement(employeId);
+        employeeService.deleteUser(employeId);
         return "redirect:/employee/";
     }
 }
