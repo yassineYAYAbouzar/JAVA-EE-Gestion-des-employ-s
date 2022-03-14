@@ -16,11 +16,15 @@ import javax.validation.Valid;
 @RequestMapping("/")
 @SessionAttributes({"sessionEmployee"})
 public class UserController {
-    @Autowired
+
     private EmployeeService employeeService;
 
+    @Autowired
+    public UserController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
-   //get Login Page
+    //get Login Page
     @GetMapping("/")
     public String loginForm(@ModelAttribute("employee") Employee employee ) {
         return "login";

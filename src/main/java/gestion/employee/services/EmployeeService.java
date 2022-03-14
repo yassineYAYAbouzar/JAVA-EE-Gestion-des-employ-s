@@ -11,7 +11,7 @@ public interface EmployeeService {
 	 Boolean deleteUser(String uuid);
 	 List<Employee> getUsers();
 	 Employee updateElement(Employee employee);
-	Employee getEmployee(String uuId);
-	Employee findByEmailAndPassword(String email, String password);
-	int changePassword(String email, String password);
+	 Employee getEmployee(String uuId);
+	 Employee findByEmailAndPassword(String email, String password);
+	 int changePassword(String email, String password);
 }

@@ -35,11 +35,10 @@ public class Employee {
     private String lastName;
     @Column(unique = true ,length = 70)
     @NonNull
-    @Size(min = 2, max = 18)
     @Email
     private String email;
     @NonNull
-    @Size(min = 4, max = 18)
+    @Size(min = 4, max = 18 )
     private String password;
     private Role role ;
 
@@ -52,4 +51,12 @@ public class Employee {
     @Valid
     private Address address ;
 
+    public Employee(String userId, @NonNull String firstName, @NonNull String lastName, @NonNull String email, @NonNull String password, Role role) {
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+        this.role = role;
+    }
 }

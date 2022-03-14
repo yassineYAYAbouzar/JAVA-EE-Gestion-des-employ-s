@@ -1,11 +1,9 @@
 package gestion.employee.Dae;
 
 
-import gestion.employee.Database.HibernateUtil;
 import gestion.employee.Entities.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,9 +13,15 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class EmployeeImp implements GenericDae<Employee, Long> {
-    @Autowired
+public class EmployeeImp implements EmployeeDae {
+
     private SessionFactory sessionFactory;
+
+    @Autowired
+    public EmployeeImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public Employee insertElement(Employee employee) {
         Session currentSession = sessionFactory.getCurrentSession();

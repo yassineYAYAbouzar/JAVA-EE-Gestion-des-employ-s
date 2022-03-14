@@ -21,9 +21,9 @@ public class Address {
     @Id
     @GeneratedValue
     private Long id;
-    @Size(min = 3 , max = 4)
+    @Size(min = 3 , max = 14 ,message = "street must be between 3 and 14 character")
     private String street;
-    @Size(min = 3 , max = 4)
+    @Size(min = 3 , max = 14 ,message = "city must be between 3 and 14 character")
     private String city;
 
 }

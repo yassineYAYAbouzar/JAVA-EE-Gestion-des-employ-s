@@ -1,12 +1,9 @@
 package gestion.employee.repository;
 
 
-import gestion.employee.Database.HibernateUtil;
 import gestion.employee.Entities.Employee;
-import gestion.employee.Entities.Role;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -15,9 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 @Repository
 @Transactional
-public class EmployeeRepositoryImp implements GenericRepo<Employee, Long> {
-    @Autowired
+public class EmployeeRepositoryImp implements EmployeeRepository {
     private SessionFactory sessionFactory;
+
+    @Autowired
+    public EmployeeRepositoryImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
     @Override
     public Employee findByEmail(String email) {
 

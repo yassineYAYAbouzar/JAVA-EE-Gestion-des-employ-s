@@ -1,10 +1,7 @@
 package gestion.employee.Entities;
 
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Entity;
@@ -24,4 +21,8 @@ public class Contact {
     private Integer mobileNumber;
     private Integer fixNumber;
 
+    public Contact(Integer mobileNumber, Integer fixNumber) {
+        this.mobileNumber = mobileNumber;
+        this.fixNumber = fixNumber;
+    }
 }

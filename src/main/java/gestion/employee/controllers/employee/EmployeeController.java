@@ -18,9 +18,12 @@ import java.util.List;
 @Controller
 @RequestMapping("employee")
 public class EmployeeController {
-    @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @ModelAttribute("roleList")
     private List<Role> roleList(){
